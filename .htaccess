@@ -1,0 +1,29 @@
+# Disable directory browsing
+Options -Indexes
+
+# Follow Symbolic Links
+Options +FollowSymLinks
+
+# Security Headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# URL Rewriting (Supports Laragon subfolder or custom domain)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Do not rewrite existing files or directories
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Optional clean URL rules
+    # RewriteRule ^projects/?$ projects.php [L,QSA]
+    # RewriteRule ^project/([0-9]+)/?$ project.php?id=$1 [L,QSA]
+    # RewriteRule ^project/([a-zA-Z0-9\-]+)/?$ project.php?slug=$1 [L,QSA]
+    # RewriteRule ^certifications/?$ certifications.php [L,QSA]
+    # RewriteRule ^contact/?$ contact.php [L,QSA]
+</IfModule>
