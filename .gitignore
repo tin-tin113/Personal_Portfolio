@@ -2,6 +2,8 @@
 *.db
 temp_hist.db
 h.db
+# Allow committed SQLite database
+!database/portfolio.sqlite
 
 # Scratch and build directories
 scratch/
