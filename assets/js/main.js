@@ -64,14 +64,21 @@ document.addEventListener('DOMContentLoaded', () => {
   if ('IntersectionObserver' in window && revealElements.length > 0) {
     const revealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting || entry.intersectionRatio > 0) {
           entry.target.classList.add('revealed');
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.05, rootMargin: '0px 0px 50px 0px' });
 
-    revealElements.forEach(el => revealObserver.observe(el));
+    revealElements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        el.classList.add('revealed');
+      } else {
+        revealObserver.observe(el);
+      }
+    });
   } else {
     // Fallback if browser doesn't support observer
     revealElements.forEach(el => el.classList.add('revealed'));

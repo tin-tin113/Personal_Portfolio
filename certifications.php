@@ -52,10 +52,16 @@ $licenses = $pdo->query("
                     <?php if (!empty($c['credential_id'])): ?>
                       <span class="font-monospace">ID: <?= e($c['credential_id']) ?></span>
                     <?php endif; ?>
-                    <?php if (!empty($c['certificate_file'])): ?>
+                    <?php if (!empty($c['certificate_file']) && !empty($c['credential_url'])): ?>
+                      <div class="d-flex gap-2">
+                        <a href="<?= BASE_URL . '/' . e($c['certificate_file']) ?>" target="_blank" class="fw-bold text-teal">View File &rarr;</a>
+                        <span class="text-muted">&bull;</span>
+                        <a href="<?= e($c['credential_url']) ?>" target="_blank" rel="noopener noreferrer" class="fw-bold text-teal">Verify Online &rarr;</a>
+                      </div>
+                    <?php elseif (!empty($c['certificate_file'])): ?>
                       <a href="<?= BASE_URL . '/' . e($c['certificate_file']) ?>" target="_blank" class="fw-bold text-teal">View Certificate File &rarr;</a>
                     <?php elseif (!empty($c['credential_url'])): ?>
-                      <a href="<?= e($c['credential_url']) ?>" target="_blank" class="fw-bold text-teal">Verify Credential &rarr;</a>
+                      <a href="<?= e($c['credential_url']) ?>" target="_blank" rel="noopener noreferrer" class="fw-bold text-teal">Verify Credential &rarr;</a>
                     <?php endif; ?>
                   </div>
                 </div>

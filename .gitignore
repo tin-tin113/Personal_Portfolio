@@ -1,0 +1,11 @@
+# Database files & history
+*.db
+temp_hist.db
+h.db
+
+# Scratch and build directories
+scratch/
+
+# OS and environment
+.DS_Store
+Thumbs.db

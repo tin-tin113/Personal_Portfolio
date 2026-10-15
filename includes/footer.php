@@ -45,6 +45,6 @@ $copyright   = site_setting('copyright_text', '© ' . date('Y') . ' ' . e($profi
 <!-- Bootstrap 5 Bundle JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/bootstrap.bundle.min.js"></script>
 <!-- Public Custom JS -->
-<script src="<?= BASE_URL ?>/assets/js/main.js"></script>
+<script src="<?= BASE_URL ?>/assets/js/main.js?v=<?= filemtime(ROOT_PATH . '/assets/js/main.js') ?>"></script>
 </body>
 </html>

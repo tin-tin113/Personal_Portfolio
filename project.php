@@ -92,14 +92,14 @@ require_once __DIR__ . '/includes/navbar.php';
       <div class="col-12 col-lg-8">
         <!-- Main Cover Image -->
         <?php if (!empty($project['project_image'])): ?>
-          <div class="mb-4 rounded shadow-sm overflow-hidden border reveal-fade-up">
-            <img src="<?= BASE_URL . '/' . e($project['project_image']) ?>" class="img-fluid w-100" style="max-height:420px; object-fit:cover;" alt="<?= e($project['title']) ?>">
+          <div class="mb-4 rounded shadow-sm overflow-hidden border d-flex align-items-center justify-content-center" style="background:#f8fafc; min-height:260px; max-height:500px;">
+            <img src="<?= BASE_URL . '/' . e($project['project_image']) ?>" class="img-fluid" style="max-height:500px; width:auto; max-width:100%; object-fit:contain;" alt="<?= e($project['title']) ?>">
           </div>
         <?php endif; ?>
 
         <!-- Detailed Overview -->
         <?php if (!empty($project['detailed_description'])): ?>
-          <div class="card-custom p-4 mb-4 reveal-fade-up">
+          <div class="card-custom p-4 mb-4">
             <h4 class="fw-bold mb-3">Project Overview</h4>
             <div class="lh-lg text-muted">
               <?= nl2br(e($project['detailed_description'])) ?>
@@ -109,7 +109,7 @@ require_once __DIR__ . '/includes/navbar.php';
 
         <!-- Key Features -->
         <?php if (!empty($project['key_features'])): ?>
-          <div class="card-custom p-4 mb-4 reveal-fade-up">
+          <div class="card-custom p-4 mb-4">
             <h4 class="fw-bold mb-3">Key Features &amp; Functionality</h4>
             <div class="lh-lg text-muted">
               <?= nl2br(e($project['key_features'])) ?>
@@ -119,7 +119,7 @@ require_once __DIR__ . '/includes/navbar.php';
 
         <!-- Challenges & Solutions -->
         <?php if (!empty($project['challenges'])): ?>
-          <div class="card-custom p-4 mb-4 reveal-fade-up">
+          <div class="card-custom p-4 mb-4">
             <h4 class="fw-bold mb-3"><i class="bi bi-lightning-charge text-warning me-2"></i> Technical Challenges &amp; Solutions</h4>
             <div class="lh-lg text-muted">
               <?= nl2br(e($project['challenges'])) ?>
@@ -129,7 +129,7 @@ require_once __DIR__ . '/includes/navbar.php';
 
         <!-- Screenshot Gallery -->
         <?php if (!empty($gallery)): ?>
-          <div class="card-custom p-4 mb-4 reveal-fade-up">
+          <div class="card-custom p-4 mb-4">
             <h4 class="fw-bold mb-3">Project Screenshots Gallery</h4>
             <div class="row g-3">
               <?php foreach ($gallery as $g): ?>
@@ -146,8 +146,8 @@ require_once __DIR__ . '/includes/navbar.php';
       </div>
 
       <!-- Sidebar Specs Column -->
-      <div class="col-12 col-lg-4 reveal-fade-up">
-        <div class="card-custom p-4 sticky-top" style="top:90px;">
+      <div class="col-12 col-lg-4">
+        <div class="card-custom p-4 sticky-top" style="top:90px; z-index:10;">
           <h5 class="fw-bold mb-3 border-bottom pb-2">Project Metadata</h5>
 
           <div class="mb-3">

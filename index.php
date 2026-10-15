@@ -75,7 +75,7 @@ $socialLinks = $pdo->query("
 <section class="hero-section text-center text-md-start">
   <div class="container">
     <div class="row align-items-center g-5">
-      <div class="col-12 col-md-4 text-center order-md-last reveal-fade-up">
+      <div class="col-12 col-md-5 col-lg-5 text-center order-md-last reveal-fade-up">
         <div class="hero-avatar-wrap">
           <?php if (!empty($profile['profile_image'])): ?>
             <img src="<?= BASE_URL . '/' . e($profile['profile_image']) ?>" class="hero-avatar" alt="<?= e($profile['full_name']) ?>">
@@ -87,7 +87,7 @@ $socialLinks = $pdo->query("
         </div>
       </div>
 
-      <div class="col-12 col-md-8 reveal-fade-up">
+      <div class="col-12 col-md-7 col-lg-7 reveal-fade-up">
         <?php if (!empty($profile['availability_status'])): ?>
           <div class="mb-3">
             <span class="status-badge">
@@ -365,7 +365,13 @@ $socialLinks = $pdo->query("
                   <?php if (!empty($c['credential_id'])): ?>
                     <span class="font-monospace">ID: <?= e($c['credential_id']) ?></span>
                   <?php endif; ?>
-                  <?php if (!empty($c['certificate_file'])): ?>
+                  <?php if (!empty($c['certificate_file']) && !empty($c['credential_url'])): ?>
+                    <div class="d-flex gap-2">
+                      <a href="<?= BASE_URL . '/' . e($c['certificate_file']) ?>" target="_blank" class="fw-bold text-teal">View File &rarr;</a>
+                      <span class="text-muted">&bull;</span>
+                      <a href="<?= e($c['credential_url']) ?>" target="_blank" rel="noopener noreferrer" class="fw-bold text-teal">Verify Online &rarr;</a>
+                    </div>
+                  <?php elseif (!empty($c['certificate_file'])): ?>
                     <a href="<?= BASE_URL . '/' . e($c['certificate_file']) ?>" target="_blank" class="fw-bold text-teal">View Certificate File &rarr;</a>
                   <?php elseif (!empty($c['credential_url'])): ?>
                     <a href="<?= e($c['credential_url']) ?>" target="_blank" rel="noopener noreferrer" class="fw-bold text-teal">Verify Online &rarr;</a>
@@ -400,6 +406,12 @@ $socialLinks = $pdo->query("
           </div>
         </div>
       <?php endforeach; ?>
+    </div>
+
+    <div class="text-center mt-5 reveal-fade-up">
+      <a href="<?= BASE_URL ?>/certifications.php" class="btn btn-outline-custom">
+        <i class="bi bi-patch-check me-1"></i> View All Certifications &amp; Credentials <i class="bi bi-arrow-right ms-1"></i>
+      </a>
     </div>
   </div>
 </section>

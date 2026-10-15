@@ -47,7 +47,7 @@ $pageTitle = isset($customPageTitle) ? e($customPageTitle) . ' | ' . e($siteTitl
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
   <!-- Public Custom CSS -->
-  <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css">
+  <link rel="stylesheet" href="<?= BASE_URL ?>/assets/css/style.css?v=<?= filemtime(ROOT_PATH . '/assets/css/style.css') ?>">
 
   <style>
     :root {
